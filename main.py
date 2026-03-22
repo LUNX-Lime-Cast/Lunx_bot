@@ -24,6 +24,23 @@ async def on_ready():
         )
     )
 
+@bot.event
+async def on_command_error(ctx, error):
+    embed = discord.Embed(title="❌ Error", color=discord.Color.red())
+
+    if isinstance(error, commands.MemberNotFound):
+        embed.description = "Couldn't find that member!"
+    elif isinstance(error, commands.MissingRequiredArgument):
+        embed.description = f"Missing argument: `{error.param.name}`"
+    elif isinstance(error, commands.BadArgument):
+        embed.description = "Invalid argument provided!"
+    else:
+        embed.description = f"An unexpected error occurred: `{error}`"
+
+    embed.set_footer(text=copyright)
+    await ctx.reply(embed=embed)
+
+
 
 @bot.command()
 async def ban(ctx, member: discord.Member, *, reason: str = "No reason provided"):
