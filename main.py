@@ -93,13 +93,14 @@ async def help(ctx):
     embed.add_field(name=";ban @user [reason]", value="Joke bans a user", inline=False)
     embed.add_field(name=";about", value="Shows info about the bot", inline=False)
     embed.add_field(name=";uptime", value="Shows how long the bot has been online", inline=False)
+    embed.add_field(name="sudo", value=";sudo <heck/steal/virus/poweroff> <user>", inline=False)
     embed.set_footer(text=copyright)
     await ctx.reply(embed=embed)
 
 @bot.group()
 async def sudo(ctx):
     if ctx.invoked_subcommand is None:
-        await ctx.reply("Usage: `;sudo <hack/steal/virus>`")
+        await ctx.reply("Usage: `;sudo <heck/steal/virus/poweroff>`")
 
 @sudo.command()
 async def heck(ctx, member: discord.Member):
