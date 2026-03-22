@@ -8,6 +8,44 @@ import asyncio
 
 load_dotenv()
 
+fake_passwords = [
+    "password123",
+    "qwerty",
+    "iloveyou",
+    "123456",
+    "letmein",
+    "monkey",
+    "dragon",
+    "sunshine",
+    "princess",
+    "football",
+    "batman",
+    "superman",
+    "pokemon",
+    "pikachu",
+    "cheese",
+    "burger",
+    "pizza123",
+    "hello123",
+    "abc123",
+    "trustno1",
+    "starwars",
+    "minecraft",
+    "roblox123",
+    "fortnite",
+    "youwillneverguessthis",
+    "correcthorsebatterystaple",
+    "hunter2",
+    "opensesame",
+    "secretpassword",
+    "iamthebest",
+    "mymomisthebest",
+    "ihavenoidea",
+    "pleasedontban",
+    "iliketrains",
+]
+
+
 uptimeVar = None
 
 intents = discord.Intents.default()
@@ -114,7 +152,8 @@ async def heck(ctx, member: discord.Member):
     if random.random() < 0.4:
         await msg.edit(content=f"❌ Hack failed! {member.mention} was too powerful... 💀")
     else:
-        await msg.edit(content=f"✅ Successfully hacked {member.mention}!\nPassword was: `password123`")
+        password = random.choice(fake_passwords)
+        await msg.edit(content=f"✅ Successfully hacked {member.mention}!\nPassword was: `{password}`")
 
 @sudo.command()
 async def steal(ctx, member: discord.Member):
@@ -129,7 +168,9 @@ async def steal(ctx, member: discord.Member):
 async def virus(ctx, member: discord.Member):
     msg = await ctx.reply(f"📤 Sending virus to {member.mention}...")
     await asyncio.sleep(2)
-    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C://System32` has been deleted 💀")
+    await msg.edit(content=f"Starting virus...")
+    await asyncio.sleep(2)
+    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C:\System32` has been deleted and / 💀")
 
 @sudo.command()
 async def poweroff(ctx, member: discord.Member):
