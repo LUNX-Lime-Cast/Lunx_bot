@@ -124,6 +124,10 @@ async def uptime(ctx):
 
     await ctx.reply(embed=embed)
 
+@bot.command()
+async def explode(ctx, user: discord.Member):
+    await ctx.reply(content=f"thine have been explode {user.mention} stupid biatch sucka [blait](https://c.tenor.com/KPr-5NNM3JAAAAAC/tenor.gif)")
+
     
 @bot.command()
 async def help(ctx):
@@ -132,6 +136,7 @@ async def help(ctx):
     embed.add_field(name=";about", value="Shows info about the bot", inline=False)
     embed.add_field(name=";uptime", value="Shows how long the bot has been online", inline=False)
     embed.add_field(name="sudo", value=";sudo <heck/steal/virus/poweroff> <user>", inline=False)
+    embed.add_field(name=";explode", value="Explodes a user", inline=False)
     embed.set_footer(text=copyright)
     await ctx.reply(embed=embed)
 
@@ -140,13 +145,60 @@ async def sudo(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.reply("Usage: `;sudo <heck/steal/virus/poweroff>`")
 
+DEFLECT_ROLE_ID = 1480252110217150626
+
 @sudo.command()
 async def heck(ctx, member: discord.Member):
     msg = await ctx.reply(f"🔓 Hacking {member.mention}...")
     await asyncio.sleep(2)
+    deflect_role = discord.utils.get(member.roles, id=DEFLECT_ROLE_ID)
+    if deflect_role:
+        await msg.exit(content=f"User {member.mention} has a firewall and the attack rebounds on you")
+        await asyncio.sleep(2)
+        await msg.edit(content=f"💾 Downloading {ctx.author.display_name}'s data...")
+        await asyncio.sleep(2)
+        await msg.edit(content=f"🔑 Cracking password...")
+        await asyncio.sleep(random.randint(1, 5))
+
+        if random.random() < 0.4:
+            await msg.edit(content=f"❌ Hack failed! {ctx.author.mention} was too powerful... 💀")
+            return
+        else:
+            password = random.choice(fake_passwords)
+            await msg.edit(content=f"✅ Successfully hacked {ctx.author.mention}!\nPassword was:    `{password}`")
+            return
     if member.id == 1485037805120913608:
         await msg.edit(content="❌ I refuse to hack myself!")
         return
+    if member.id == 1188797524111265822:
+        await msg.edit(content=f"User {member.mention} has a firewall and the attack rebounds on you")
+        await asyncio.sleep(2)
+        await msg.edit(content=f"💾 Downloading {ctx.author.display_name}'s data...")
+        await asyncio.sleep(2)
+        await msg.edit(content=f"🔑 Cracking password...")
+        await asyncio.sleep(random.randint(1, 5))
+
+        if random.random() < 0.4:
+            await msg.edit(content=f"❌ Hack failed! {ctx.author.mention} was too powerful... 💀")
+            return
+        else:
+            password = random.choice(fake_passwords)
+            await msg.edit(content=f"✅ Successfully hacked {ctx.author.mention}!\nPassword was:    `{password}`")
+            return
+    elif member.id == 692104910229078066:
+        await msg.edit(content=f"User {member.mention} has a firewall and the attack rebounds on you")
+        await asyncio.sleep(2)
+        await msg.edit(content=f"💾 Downloading {ctx.author.display_name}'s data...")
+        await asyncio.sleep(2)
+        await msg.edit(content=f"🔑 Cracking password...")
+        await asyncio.sleep(random.randint(1, 5))
+
+        if random.random() < 0.4:
+            await msg.edit(content=f"❌ Hack failed! {ctx.author.mention} was too powerful... 💀")
+        else:
+            password = random.choice(fake_passwords)
+            await msg.edit(content=f"✅ Successfully hacked {ctx.author.mention}!\nPassword was:    `{password}`")
+            return
     await msg.edit(content=f"💾 Downloading {member.display_name}'s data...")
     await asyncio.sleep(2)
     await msg.edit(content=f"🔑 Cracking password...")
@@ -157,6 +209,8 @@ async def heck(ctx, member: discord.Member):
     else:
         password = random.choice(fake_passwords)
         await msg.edit(content=f"✅ Successfully hacked {member.mention}!\nPassword was: `{password}`")
+
+
 
 @sudo.command()
 async def steal(ctx, member: discord.Member):
@@ -173,7 +227,7 @@ async def virus(ctx, member: discord.Member):
     await asyncio.sleep(2)
     await msg.edit(content=f"Starting virus...")
     await asyncio.sleep(2)
-    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C:\System32` and / has been deleted 💀")
+    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C:\System32` and `/` has been deleted 💀")
 
 @sudo.command()
 async def poweroff(ctx, member: discord.Member):
