@@ -3,6 +3,8 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import os
 import datetime
+import random
+import asyncio
 
 load_dotenv()
 
@@ -93,5 +95,45 @@ async def help(ctx):
     embed.add_field(name=";uptime", value="Shows how long the bot has been online", inline=False)
     embed.set_footer(text=copyright)
     await ctx.reply(embed=embed)
+
+@bot.group()
+async def sudo(ctx):
+    if ctx.invoked_subcommand is None:
+        await ctx.reply("Usage: `;sudo <hack/steal/virus>`")
+
+@sudo.command()
+async def heck(ctx, member: discord.Member):
+    msg = await ctx.reply(f"🔓 Hacking {member.mention}...")
+    await asyncio.sleep(2)
+    await msg.edit(content=f"💾 Downloading {member.display_name}'s data...")
+    await asyncio.sleep(2)
+    await msg.edit(content=f"🔑 Cracking password...")
+    await asyncio.sleep(2)
+
+    if random.random() < 0.4:
+        await msg.edit(content=f"❌ Hack failed! {member.mention} was too powerful... 💀")
+    else:
+        await msg.edit(content=f"✅ Successfully hacked {member.mention}!\nPassword was: `password123`")
+
+@sudo.command()
+async def steal(ctx, member: discord.Member):
+    fake_ip = f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}"
+    embed = discord.Embed(title="🌐 IP Stolen!", color=discord.Color.red())
+    embed.add_field(name="Victim", value=member.mention)
+    embed.add_field(name="IP Address", value=f"`{fake_ip}`")
+    embed.set_footer(text=copyright)
+    await ctx.reply(embed=embed)
+
+@sudo.command()
+async def virus(ctx, member: discord.Member):
+    msg = await ctx.reply(f"📤 Sending virus to {member.mention}...")
+    await asyncio.sleep(2)
+    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C://System32` has been deleted 💀")
+
+@sudo.command()
+async def poweroff(ctx, member: discord.Member):
+    msg = await ctx.reply(f"📤 Powering off {member.mention}'s computer...")
+    await asyncio.sleep(2)
+    await msg.edit(content=f"⚠️ Powered off {member.mention}'s computer...")
 
 bot.run(os.getenv("TOKEN"))
