@@ -145,7 +145,7 @@ async def heck(ctx, member: discord.Member):
     msg = await ctx.reply(f"🔓 Hacking {member.mention}...")
     await asyncio.sleep(2)
     if member.id == 1485037805120913608:
-        await msg.edit(content="❌ I cant hack myself!")
+        await msg.edit(content="❌ I refuse to hack myself!")
         return
     await msg.edit(content=f"💾 Downloading {member.display_name}'s data...")
     await asyncio.sleep(2)
