@@ -147,7 +147,7 @@ async def heck(ctx, member: discord.Member):
     await msg.edit(content=f"💾 Downloading {member.display_name}'s data...")
     await asyncio.sleep(2)
     await msg.edit(content=f"🔑 Cracking password...")
-    await asyncio.sleep(2)
+    await asyncio.sleep(random.random(0.5, 5))
 
     if random.random() < 0.4:
         await msg.edit(content=f"❌ Hack failed! {member.mention} was too powerful... 💀")
