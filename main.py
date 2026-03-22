@@ -2,18 +2,24 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import datetime
 
 load_dotenv()
+
+uptimeVar = None
 
 intents = discord.Intents.default()
 
 intents.message_content = True
 
-bot = commands.Bot(";", intents=intents)
+bot = commands.Bot(";", intents=intents, help_command=None)
 copyright = "©Lunx Studios"
 
 @bot.event
 async def on_ready():
+    global uptimeVar
+
+    uptimeVar = datetime.datetime.now(datetime.UTC)
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
 
     await bot.change_presence(
@@ -63,6 +69,29 @@ async def about(ctx):
     embed.add_field(name="About",value=copyright, inline=True)
     embed.add_field(name="Source Code", value="https://github.com/evokerking1/Lunx_bot", inline=True)
 
+    await ctx.reply(embed=embed)
+
+@bot.command()
+async def uptime(ctx):
+    delta = datetime.datetime.now(datetime.UTC) - uptimeVar
+    hours, remainder = divmod(int(delta.total_seconds()), 3600)
+    minutes, seconds = divmod(remainder, 60)
+    days, hours = divmod(hours, 24)
+
+    embed = discord.Embed(title="⏱️ Uptime", color=discord.Color.green())
+    embed.description = f"`{days}d {hours}h {minutes}m {seconds}s`"
+    embed.set_footer(text=copyright)
+
+    await ctx.reply(embed=embed)
+
+    
+@bot.command()
+async def help(ctx):
+    embed = discord.Embed(title="📖 Commands", color=discord.Color.green())
+    embed.add_field(name=";ban @user [reason]", value="Joke bans a user", inline=False)
+    embed.add_field(name=";about", value="Shows info about the bot", inline=False)
+    embed.add_field(name=";uptime", value="Shows how long the bot has been online", inline=False)
+    embed.set_footer(text=copyright)
     await ctx.reply(embed=embed)
 
 bot.run(os.getenv("TOKEN"))
