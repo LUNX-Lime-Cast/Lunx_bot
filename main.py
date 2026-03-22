@@ -40,4 +40,11 @@ async def ban(ctx, member: discord.Member, *, reason: str = "No reason provided"
 
     await ctx.reply(embed=embed)
 
+@bot.command()
+async def about(ctx):
+    embed = discord.Embed(color=discord.Color.green(), title="About the Bot")
+    embed.add_field(name="About",value=copyright)
+
+    await ctx.reply(embed=embed)
+
 bot.run(os.getenv("TOKEN"))
