@@ -43,7 +43,8 @@ async def ban(ctx, member: discord.Member, *, reason: str = "No reason provided"
 @bot.command()
 async def about(ctx):
     embed = discord.Embed(color=discord.Color.green(), title="About the Bot")
-    embed.add_field(name="About",value=copyright)
+    embed.add_field(name="About",value=copyright, inline=True)
+    embed.add_field(name="Source Code", value="https://github.com/evokerking1/Lunx_bot")
 
     await ctx.reply(embed=embed)
 
