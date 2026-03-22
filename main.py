@@ -173,7 +173,7 @@ async def virus(ctx, member: discord.Member):
     await asyncio.sleep(2)
     await msg.edit(content=f"Starting virus...")
     await asyncio.sleep(2)
-    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C:\System32` has been deleted and / 💀")
+    await msg.edit(content=f"⚠️ Virus installed on {member.display_name}'s PC!\n`C:\System32` and / has been deleted 💀")
 
 @sudo.command()
 async def poweroff(ctx, member: discord.Member):
