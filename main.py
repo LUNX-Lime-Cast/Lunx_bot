@@ -47,7 +47,9 @@ fake_passwords = [
 
 
 kdf-firewall: bool = True
+
 evoker-firewall: bool = True
+
 uptimeVar = None
 
 intents = discord.Intents.default()
