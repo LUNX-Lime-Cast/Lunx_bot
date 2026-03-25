@@ -244,7 +244,7 @@ async def admin(ctx):
     if ctx.author.id != 692104910229078066:
         ctx.reply("❌ You cant run this command!!")
         return
-    else;
+    return
         
 
 bot.run(os.getenv("TOKEN"))
