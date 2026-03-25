@@ -46,6 +46,8 @@ fake_passwords = [
 ]
 
 
+kdf-firewall: bool = True
+evoker-firewall: bool = True
 uptimeVar = None
 
 intents = discord.Intents.default()
@@ -107,7 +109,7 @@ async def ban(ctx, member: discord.Member, *, reason: str = "No reason provided"
 async def about(ctx):
     embed = discord.Embed(color=discord.Color.green(), title="About the Bot")
     embed.add_field(name="About",value=copyright, inline=True)
-    embed.add_field(name="Source Code", value="https://github.com/evokerking1/Lunx_bot", inline=True)
+    embed.add_field(name="Source Code", value="https://github.com/LUNX-Lime-Cast/Lunx_bot", inline=True)
 
     await ctx.reply(embed=embed)
 
@@ -234,5 +236,13 @@ async def poweroff(ctx, member: discord.Member):
     msg = await ctx.reply(f"📤 Powering off {member.mention}'s computer...")
     await asyncio.sleep(2)
     await msg.edit(content=f"⚠️ Powered off {member.mention}'s computer...")
+
+@bot.group()
+async def admin(ctx):
+    if ctx.author.id != 692104910229078066:
+        ctx.reply("❌ You cant run this command!!")
+        return
+    else;
+        
 
 bot.run(os.getenv("TOKEN"))
