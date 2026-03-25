@@ -46,9 +46,9 @@ fake_passwords = [
 ]
 
 
-kdf-firewall: bool = True
+kdf_firewall: bool = True
 
-evoker-firewall: bool = True
+evoker_firewall: bool = True
 
 uptimeVar = None
 
