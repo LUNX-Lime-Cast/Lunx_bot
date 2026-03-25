@@ -153,7 +153,7 @@ DEFLECT_ROLE_ID = 1480252110217150626
 
 @sudo.command()
 async def heck(ctx, member: discord.Member):
-    msg = await ctx.reply(f"🔓 Hacking {member.mention}...")
+    msg = await ctx.reply(f"🔓 Hacking {member.display_name}...")
     await asyncio.sleep(2)
     deflect_role = discord.utils.get(member.roles, id=DEFLECT_ROLE_ID)
     if deflect_role:
