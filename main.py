@@ -129,8 +129,8 @@ async def uptime(ctx):
     await ctx.reply(embed=embed)
 
 @bot.command()
-async def explode(ctx, user: discord.Member):
-    await ctx.reply(content=f"thine have been explode {user.mention} stupid biatch sucka [blait](https://c.tenor.com/KPr-5NNM3JAAAAAC/tenor.gif)")
+async def explode(ctx, user: discord.Member, *, reason: string = "because they were too annoying"):
+    await ctx.reply(content=f"thine have been explode {user.mention} stupid biatch sucka [blait](https://c.tenor.com/KPr-5NNM3JAAAAAC/tenor.gif) {reason}")
 
     
 @bot.command()
