@@ -129,7 +129,7 @@ async def uptime(ctx):
     await ctx.reply(embed=embed)
 
 @bot.command()
-async def explode(ctx, user: discord.Member, *, reason: string = "because they were too annoying"):
+async def explode(ctx, user: discord.Member, *, reason: str = "because they were too annoying"):
     await ctx.reply(content=f"thine have been explode {user.mention} stupid biatch sucka [blait](https://c.tenor.com/KPr-5NNM3JAAAAAC/tenor.gif) {reason}")
 
     
@@ -140,7 +140,7 @@ async def help(ctx):
     embed.add_field(name=";about", value="Shows info about the bot", inline=False)
     embed.add_field(name=";uptime", value="Shows how long the bot has been online", inline=False)
     embed.add_field(name="sudo", value=";sudo <heck/steal/virus/poweroff> <user>", inline=False)
-    embed.add_field(name=";explode", value="Explodes a user", inline=False)
+    embed.add_field(name=";explode @user [reason]", value="Explodes a user", inline=False)
     embed.set_footer(text=copyright)
     await ctx.reply(embed=embed)
 
@@ -244,6 +244,7 @@ async def admin(ctx):
     if ctx.author.id != 692104910229078066:
         ctx.reply("❌ You cant run this command!!")
         return
+    ctx.reply("❌Sorry this command is unavailable rn please try again later.")
     return
         
 
