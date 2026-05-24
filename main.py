@@ -46,7 +46,7 @@ fake_passwords = [
 ]
 
 
-kdf_firewall: bool = True
+kdf_firewall: bool = False
 
 evoker_firewall: bool = True
 
@@ -155,7 +155,7 @@ DEFLECT_ROLE_ID = 1480252110217150626
 async def heck(ctx, member: discord.Member):
     msg = await ctx.reply(f"🔓 Hacking {member.display_name}...")
     await asyncio.sleep(2)
-    deflect_role = discord.utils.get(member.roles, id=DEFLECT_ROLE_ID)
+    deflect_role = False #discord.utils.get(member.roles, id=DEFLECT_ROLE_ID)
     if deflect_role:
         await msg.exit(content=f"User {member.mention} has a firewall and the attack rebounds on you")
         await asyncio.sleep(2)
@@ -245,6 +245,11 @@ async def admin(ctx):
         ctx.reply("❌ You cant run this command!!")
         return
     ctx.reply("❌Sorry this command is unavailable rn please try again later.")
+    return
+
+@bot.command()
+async def ai(ctx):
+    await ctx.reply("Idk how to help you")
     return
         
 
