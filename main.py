@@ -46,7 +46,7 @@ fake_passwords = [
 ]
 
 
-kdf_firewall: bool = False
+kdf_firewall: bool = True
 
 evoker_firewall: bool = True
 
