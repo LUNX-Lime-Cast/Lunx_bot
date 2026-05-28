@@ -70,7 +70,7 @@ async def on_ready():
     status=discord.Status.online,
         activity=discord.Activity(
             type=discord.ActivityType.playing,
-            name="Jokes on people"
+            name="Jokes on people in 2/3 gl00bia's"
         )
     )
 
