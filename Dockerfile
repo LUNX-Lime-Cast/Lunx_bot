@@ -6,4 +6,6 @@ COPY . .
 
 RUN ["pip", "install", "discord.py"]
 
+RUN ["pip", "install", "dotenv"]
+
 CMD ["python", "main.py"]
